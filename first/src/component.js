@@ -10,8 +10,8 @@ div{
     background: lightgreen;
 }
 `;
-div.attachShadow({mode:'open'});
-div.shadowRoot.appendChild(style);
-div.shadowRoot.appendChild(content);
+const root = div.attachShadow({mode:'closed'});
+root.appendChild(style);
+root.appendChild(content);
 
 document.body.appendChild(div);
