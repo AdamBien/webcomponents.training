@@ -12,6 +12,10 @@ div{
 `;
 const root = div.attachShadow({mode:'closed'});
 root.appendChild(style);
-root.appendChild(content);
+root.innerHTML = '<div>hello</div>';
+
+console.log(root.host);
+
+console.log(div === root.host);
 
 document.body.appendChild(div);
