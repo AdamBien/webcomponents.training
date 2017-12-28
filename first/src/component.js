@@ -11,9 +11,10 @@ div{
 `;
 const root = div.attachShadow({mode:'open'});
 root.appendChild(style);
-root.appendChild(template.content.cloneNode(true));
-root.appendChild(template.content.cloneNode(true));
-root.appendChild(template.content.cloneNode(true));
+
+root.appendChild(document.importNode(template.content,true));
+root.appendChild(document.importNode(template.content,true));
+root.appendChild(document.importNode(template.content,true));
 //root.appendChild(template.content);
 console.dir(template);
 document.body.appendChild(div);
