@@ -1,8 +1,10 @@
-const duke = document.querySelector("duke");
-console.dir(duke);
-console.log(duke instanceof HTMLUnknownElement);
+class ADuke extends HTMLElement { 
 
-const aduke = document.querySelector("a-duke");
-console.dir(aduke);
-console.log(aduke instanceof HTMLUnknownElement);
-console.log(aduke instanceof HTMLElement);
+    constructor() { 
+        super();
+        this.innerText = this.innerText +  " hey from js";
+    }
+
+}
+
+customElements.define("a-duke", ADuke);
