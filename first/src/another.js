@@ -1,2 +1,1 @@
-console.dir(ADuke.template());
-console.log(template);
+console.dir(new ADuke()._template());

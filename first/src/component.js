@@ -9,19 +9,23 @@ class ADuke extends HTMLElement {
 
     connectedCallback() { 
         console.log("connected");
-        this.appendChild(ADuke._template());
-        this.appendChild(ADuke._template());
-        this.appendChild(ADuke._template());
+        this.appendChild(this._template());
+        this.appendChild(this._template());
+        this.appendChild(this._template());
     }
 
-    static _template() { 
-        const template = document.createElement('template');
-        template.innerHTML = `
+     _template() { 
+        if (!ADuke.template) {
+            console.log("initializing template");
+            const temp = document.createElement('template');
+            temp.innerHTML = `
             <p>
             hey from template
             </p>
         `;
-        return template.content.cloneNode(true);
+            ADuke.template = temp;    
+        }    
+        return ADuke.template.content.cloneNode("true");
     }
     
 
