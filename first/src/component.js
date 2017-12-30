@@ -8,3 +8,6 @@ class ADuke extends HTMLElement {
 }
 
 customElements.define("a-duke", ADuke);
+console.log('customElements' in window);
+console.log(window.customElements);
+console.log(customElements instanceof CustomElementRegistry);
