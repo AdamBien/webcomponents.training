@@ -6,6 +6,17 @@ class ADuke extends HTMLElement {
         this.innerText = this.innerText +  " hey from js";
     }
 
+    connectedCallback() { 
+        console.log("connected");
+    }
+    disconnectedCallback() {
+        console.log("disconnected");
+     }
+    
+    adoptedCallback(oldDoc, newDoc) { 
+        console.log(oldDoc,newDoc);
+    }
+
 }
 
 const shouldNotExist = customElements.get("a-duke");
@@ -17,4 +28,7 @@ customElements.whenDefined("a-duke").
 console.log("before");
 customElements.define("a-duke", ADuke);
 console.log("after");
+
+const el = document.querySelector("a-duke");
+document.body.remove(el);
 
