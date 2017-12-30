@@ -1,9 +1,4 @@
-const template = document.createElement('template');
-template.innerHTML = `
-    <p>
-    hey from template
-    </p>
-`;
+
 
 class ADuke extends HTMLElement { 
 
@@ -14,9 +9,19 @@ class ADuke extends HTMLElement {
 
     connectedCallback() { 
         console.log("connected");
-        this.appendChild(template.content.cloneNode(true));
-        this.appendChild(template.content.cloneNode(true));
-        this.appendChild(template.content.cloneNode(true));
+        this.appendChild(ADuke._template());
+        this.appendChild(ADuke._template());
+        this.appendChild(ADuke._template());
+    }
+
+    static _template() { 
+        const template = document.createElement('template');
+        template.innerHTML = `
+            <p>
+            hey from template
+            </p>
+        `;
+        return template.content.cloneNode(true);
     }
     
 
