@@ -14,8 +14,6 @@ class ADuke extends HTMLElement {
         console.log("connected");
         this.root.appendChild(this.templates.style());
         this.root.appendChild(this.templates.aduke());
-        this.root.appendChild(this.templates.aduke());
-        this.root.appendChild(this.templates.aduke());
     }
 
     

@@ -21,10 +21,11 @@ export default class Templates {
             console.log("inistializing template");
             const temp = document.createElement('template');
             temp.innerHTML = `
-            <slot></slot>
+            <slot name="title">TITLE</slot>
             <p>
             hey from template
             </p>
+            <slot name="footer">FOOTER</slot>
             
         `;
         Templates.template = temp;    
