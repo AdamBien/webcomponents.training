@@ -6,13 +6,14 @@ class ADuke extends HTMLElement {
         super();
         console.log("constructor");
         this.templates = new Templates();
+        this.root = this.attachShadow({mode:'open'});
     }
 
     connectedCallback() { 
         console.log("connected");
-        this.appendChild(this.templates.aduke());
-        this.appendChild(this.templates.aduke());
-        this.appendChild(this.templates.aduke());
+        this.root.appendChild(this.templates.aduke());
+        this.root.appendChild(this.templates.aduke());
+        this.root.appendChild(this.templates.aduke());
     }
 
     
