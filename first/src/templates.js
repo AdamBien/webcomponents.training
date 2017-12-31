@@ -8,7 +8,6 @@ export default class Templates {
             p{
                 background: lightgreen;
             }
-
             `;
             styleElement.appendChild(document.createTextNode(styling));
             Templates.style = styleElement;
