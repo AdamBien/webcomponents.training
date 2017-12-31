@@ -4,9 +4,10 @@ class ADuke extends HTMLElement {
 
     constructor() { 
         super();
-        console.log("constructor");
+        console.log("constructor " + this.innerText);
         this.templates = new Templates();
-        this.root = this.attachShadow({mode:'open'});
+        this.root = this.attachShadow({ mode: 'open' });
+        
     }
 
     connectedCallback() { 
