@@ -6,6 +6,11 @@ export default class Templates {
             console.log("initializing template");
             const temp = document.createElement('template');
             temp.innerHTML = `
+            <style>
+            p{
+                background: lightgreen;
+            }
+            </style>
             <p>
             hey from template
             </p>
