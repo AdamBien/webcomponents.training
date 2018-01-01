@@ -8,6 +8,9 @@ export default class Templates {
             p{
                 background: lightgreen;
             }
+            ::slotted(p){
+                background: lightblue;
+            }
             `;
             styleElement.appendChild(document.createTextNode(styling));
             Templates.style = styleElement;
@@ -21,11 +24,11 @@ export default class Templates {
             console.log("inistializing template");
             const temp = document.createElement('template');
             temp.innerHTML = `
-            <slot name="title">TITLE</slot>
+            <slot name="title"><p>TITLE</p></slot>
             <p>
             hey from template
             </p>
-            <slot name="footer">FOOTER</slot>
+            <slot name="footer"><p>FOOTER</p></slot>
             
         `;
         Templates.template = temp;    
