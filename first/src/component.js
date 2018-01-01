@@ -14,6 +14,9 @@ class ADuke extends HTMLElement {
         console.log("connected");
         this.root.appendChild(this.templates.style());
         this.root.appendChild(this.templates.aduke());
+        const titleSlot = this.root.querySelector("slot[name='title']");
+        const contents = titleSlot.assignedNodes({ flatten: false });
+        console.log(contents);
     }
 
     
