@@ -15,6 +15,7 @@ class ADuke extends HTMLElement {
         this.root.appendChild(this.templates.style());
         this.root.appendChild(this.templates.aduke());
         const titleSlot = this.root.querySelector("slot[name='title']");
+        titleSlot.addEventListener('slotchange', e => console.log(e));
         const contents = titleSlot.assignedNodes({ flatten: false });
         console.log(contents);
     }
@@ -23,5 +24,16 @@ class ADuke extends HTMLElement {
 
 }
 customElements.define("a-duke", ADuke);
+
+customElements.whenDefined("a-duke").then(_ => { 
+
+    const duke = document.querySelector("a-duke");
+    const div = document.createElement('div');
+    div.setAttribute("slot", "title");
+    div.innerText = "new slot";
+    duke.appendChild(div);
+
+
+});
 
 
