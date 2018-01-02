@@ -6,7 +6,7 @@ export default class Templates {
             const styleElement = document.createElement("style");
             const styling = `
             p{
-                background: lightgreen;
+                background: var(--duke-color,gold);
             }
             ::slotted(p){
                 background: lightblue;
