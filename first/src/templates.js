@@ -13,6 +13,13 @@ export default class Templates {
                 margin: 1em;
                 padding: 0.5em;
             }
+            :host(:hover){
+                opacity: 0.5;
+                color: yellow;
+            }
+            :host([disabled]){
+                opacity: 0.3;
+            }
             :host-context(.headline){
                 font-size: 3em;
             }
