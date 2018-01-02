@@ -5,6 +5,13 @@ export default class Templates {
         if (!Templates.style) { 
             const styleElement = document.createElement("style");
             const styling = `
+            :host{
+                display:block;
+                font-size: 2em;
+                border: 2px dashed green;
+                margin: 1em;
+                padding: 0.5em;
+            }
             p{
                 background: var(--duke-color,gold);
             }
