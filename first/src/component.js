@@ -7,6 +7,8 @@ class ADuke extends HTMLElement {
         console.log("constructor " + this.innerText);
         this.templates = new Templates();
         this.root = this.attachShadow({ mode: 'open' });
+        this.messageView = document.createElement("article");
+    
         
     }
 
@@ -14,6 +16,7 @@ class ADuke extends HTMLElement {
         console.log("connected");
         this.root.appendChild(this.templates.style());
         this.root.appendChild(this.templates.aduke());
+        this.root.appendChild(this.messageView);
         const titleSlot = this.root.querySelector("slot[name='title']");
         const contents = titleSlot.assignedNodes({ flatten: false });
         if(contents.length > 0)
@@ -26,7 +29,10 @@ class ADuke extends HTMLElement {
     }
 
     set message(msg) { 
-        this.setAttribute('message',msg);
+        this.setAttribute('message', msg);
+        this.messageView.innerHTML = `
+            <div>The message is ${msg}</div>
+        `;
     }
 
     attributeChangedCallback(attributeName,oldValue,newValue) { 
@@ -46,7 +52,7 @@ customElements.whenDefined("a-duke").then(_ => {
     console.log('message property',aduke.message);
     aduke.setAttribute("message","good bye");
     console.log('message property', aduke.message);
-    aduke.message = 'changed with property';
+    aduke.message = 'have a nice day';
 
 });
 
