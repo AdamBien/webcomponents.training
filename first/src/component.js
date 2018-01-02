@@ -32,4 +32,10 @@ class ADuke extends HTMLElement {
 }
 customElements.define("a-duke", ADuke);
 
+customElements.whenDefined("a-duke").then(_ => { 
+    const aduke = document.querySelector("a-duke");
+    aduke.setAttribute("message","good bye");
+
+});
+
 
