@@ -6,6 +6,7 @@ export default class Templates {
             const styleElement = document.createElement("style");
             const styling = `
             :host{
+                all: initial;
                 display:block;
                 font-size: 2em;
                 border: 2px dashed green;
