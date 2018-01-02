@@ -20,6 +20,13 @@ class ADuke extends HTMLElement {
         console.log("Assigned slot",contents[0],contents[0].assignedSlot);
     }
 
+    attributeChangedCallback(attributeName,oldValue,newValue) { 
+        console.log(`attribute listener: ${attributeName} ${oldValue} ${newValue}`);
+    }
+
+    static get observedAttributes() { 
+        return ['message'];
+    }
     
 
 }
