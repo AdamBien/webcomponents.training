@@ -12,6 +12,9 @@ export default class Templates {
                 margin: 1em;
                 padding: 0.5em;
             }
+            :host-context(.headline){
+                font-size: 3em;
+            }
             p{
                 background: var(--duke-color,gold);
             }
