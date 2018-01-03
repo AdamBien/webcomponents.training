@@ -8,7 +8,7 @@ class ADuke extends HTMLElement {
         this.templates = new Templates();
         this.root = this.attachShadow({ mode: 'open' });
         this.messageView = document.createElement("article");
-    
+        this.counter = 0;
         
     }
 
@@ -17,10 +17,8 @@ class ADuke extends HTMLElement {
         this.root.appendChild(this.templates.style());
         this.root.appendChild(this.templates.aduke());
         this.root.appendChild(this.messageView);
-        const titleSlot = this.root.querySelector("slot[name='title']");
-        const contents = titleSlot.assignedNodes({ flatten: false });
-        if(contents.length > 0)
-        console.log("Assigned slot",contents[0],contents[0].assignedSlot);
+        this.counterButton = this.root.querySelector("#counter");
+        this.counterButton.onclick = _ => this.increaseCounter();
     }
 
     get message() { 
@@ -30,9 +28,21 @@ class ADuke extends HTMLElement {
 
     set message(msg) { 
         this.setAttribute('message', msg);
+        this.updateMessageView();
+    }
+
+    increaseCounter() { 
+        this.counter++;
+        this.updateMessageView();
+    }
+
+    updateMessageView() { 
         this.messageView.innerHTML = `
-            <div>The message is ${msg}</div>
+           <code>Counter: ${this.counter}</code>
+            <div>The message is: "${this.message}"</div>
+            <p>Random number: ${Math.random()}</p>
         `;
+        
     }
 
     attributeChangedCallback(attributeName,oldValue,newValue) { 

@@ -13,10 +13,6 @@ export default class Templates {
                 margin: 1em;
                 padding: 0.5em;
             }
-            :host(:hover){
-                opacity: 0.5;
-                color: yellow;
-            }
             :host([disabled]){
                 opacity: 0.3;
             }
@@ -42,6 +38,7 @@ export default class Templates {
             console.log("inistializing template");
             const temp = document.createElement('template');
             temp.innerHTML = `
+            <button id="counter">counter</button>
             <slot name="title"><p>TITLE</p></slot>
             <p>
             hey from template
