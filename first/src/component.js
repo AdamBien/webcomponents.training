@@ -33,6 +33,12 @@ class ADuke extends HTMLElement {
 
     increaseCounter() { 
         this.counter++;
+        if (this.counter % 2 == 0) {
+            this.setAttribute("even", "true");
+
+        } else { 
+            this.setAttribute("even","false");
+        }
         this.updateMessageView();
     }
 

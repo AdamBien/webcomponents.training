@@ -5,3 +5,7 @@ body{
     font-style: italic;
 }
 
+a-duke[even=true]{
+    color: blue;
+}
+
