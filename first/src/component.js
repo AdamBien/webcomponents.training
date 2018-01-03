@@ -6,19 +6,32 @@ class ADuke extends HTMLElement {
         super();
         console.log("constructor " + this.innerText);
         this.templates = new Templates();
-        this.root = this.attachShadow({ mode: 'open' });
+        this.root = this.attachShadow({ mode: 'closed' });
         this.messageView = document.createElement("article");
         this.counter = 0;
+        
         
     }
 
     connectedCallback() { 
         console.log("connected");
+        this.scheduleID = setInterval(_=>this.onTimeout(),1000);
         this.root.appendChild(this.templates.style());
         this.root.appendChild(this.templates.aduke());
         this.root.appendChild(this.messageView);
         this.counterButton = this.root.querySelector("#counter");
         this.counterButton.onclick = _ => this.increaseCounter();
+    }
+
+    onTimeout() { 
+        console.log('on timeout');
+        const timeoutEvent = new CustomEvent("timeout", {
+            composed: true,
+            detail: {
+                counter: this.counter
+            }
+        });
+        this.root.dispatchEvent(timeoutEvent);
     }
 
     get message() { 
@@ -69,7 +82,7 @@ customElements.whenDefined("a-duke").then(_ => {
     aduke.setAttribute("message","good bye");
     console.log('message property', aduke.message);
     aduke.message = 'have a nice day';
-
+    aduke.addEventListener('timeout',e => console.log(e));
 });
 
 
