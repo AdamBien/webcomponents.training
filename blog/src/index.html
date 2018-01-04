@@ -9,9 +9,13 @@
 
 <body>
   <a-blog number=5>
-    <p>beginning</p>
+    <header slot="header">
+      <h1>WebComponent's Blog</h1>
+    </header>
     <a-post title="nice" content="useful"></a-post>
-    <p>the end</p>
+    <footer slot="footer">
+      <small>copyright: the internet</small>
+    </footer>
   </a-blog>
   <script src="blog.js"></script>
   <script src="post.js"></script>
