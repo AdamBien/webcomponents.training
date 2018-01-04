@@ -10,7 +10,7 @@ class ABlog extends HTMLElement {
     }
 
     connectedCallback() { 
-        const post = this.children[0];
+        const post = this.querySelector("a-post");
         for (let i = 0; i < this.number; i++) { 
             const clonedPost = post.cloneNode(true);
             clonedPost.setAttribute('title', `Title: ${i}`);
