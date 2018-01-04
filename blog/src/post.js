@@ -15,6 +15,10 @@ class APost extends HTMLElement {
 
     connectedCallback() { 
         this.root.appendChild(this.template());
+        const title = this.querySelector("[data-title]");
+        title.innerText = this.title;
+        const content = this.querySelector("[data-content]");
+        content.innerText = this.content;
     }
 
     template() { 
@@ -29,11 +33,9 @@ class APost extends HTMLElement {
         </style>
         <article>
         <header>
-        <h2>${this.title}</h2>
+            <slot name="title">t</title>
         </header>
-        <p>
-        ${this.content}
-        </p>
+            <slot name="content">c</title>
         </article>
         `;
         return this.templateElement.content;
