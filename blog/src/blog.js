@@ -32,7 +32,7 @@ class ABlog extends HTMLElement {
         this.root.appendChild(this.header());
         for (let i = 0; i < this.number; i++) { 
             const clonedPost = post.cloneNode(true);
-            clonedPost.setAttribute('title', `Title: ${i}`);
+            clonedPost.setAttribute('header', `Title: ${i}`);
             clonedPost.setAttribute('content', `Content: ${i}`);
             this.root.appendChild(clonedPost);
         }

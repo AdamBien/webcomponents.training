@@ -7,7 +7,7 @@ class APost extends HTMLElement {
     }
 
     get title() { 
-        return this.getAttribute('title');
+        return this.getAttribute('header');
     }
     get content() { 
         return this.getAttribute('content');
