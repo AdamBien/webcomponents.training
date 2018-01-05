@@ -39,6 +39,7 @@ class APost extends HTMLElement {
     populateContent() { 
         const content = this.querySelector("a-content");
         content.innerText = this.content;
+        content.addEventListener('contentchanged',e => console.log(e.detail.content));
 
     }
 

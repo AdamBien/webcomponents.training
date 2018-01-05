@@ -27,6 +27,16 @@ class AContent extends HTMLElement {
     stopEditing() { 
         this.innerText = this.editor.value;
         this.editor.remove();
+        this.fireContentChanged();
+    }
+
+    fireContentChanged() { 
+        const event = new CustomEvent('contentchanged', {
+            detail: {
+                content: this.innerText
+            }
+        });
+        this.dispatchEvent(event);
     }
 
 
