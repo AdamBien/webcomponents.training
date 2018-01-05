@@ -3,28 +3,23 @@ class APost extends HTMLElement {
     constructor() { 
         super();
         this.root = this.attachShadow({ mode: "open" });
-        this.templateElement = document.createElement("template");
     }
 
     get header() { 
         const headerValue = this.getAttribute('header');
-        console.log("get header", headerValue);
         return headerValue;
 
     }
     get content() { 
         const contentValue = this.getAttribute('content');
-        console.log("get content", contentValue);
         return contentValue;
     }
 
     set header(header) { 
-        console.log('set header',header);
         this.setAttribute('header', header);
     }
 
     set content(content) { 
-        console.log("set content", content);
         this.setAttribute("content",content);
     }
 
@@ -44,7 +39,10 @@ class APost extends HTMLElement {
     }
 
     template() { 
-        this.templateElement.innerHTML = `
+        if (!APost.cachedTemplate) {
+            const templateElement = document.createElement("template");
+
+            templateElement.innerHTML = `
         <style>
         :host{
             display:block;
@@ -60,7 +58,9 @@ class APost extends HTMLElement {
             <slot name="content">c</title>
         </article>
         `;
-        return this.templateElement.content;
+            APost.cachedTemplate = templateElement.content;    
+        }    
+        return APost.cachedTemplate.cloneNode(true);
     }
 
 }
