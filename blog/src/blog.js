@@ -25,15 +25,21 @@ class ABlog extends HTMLElement {
         return template.content.cloneNode(true);
     }
 
-
-
     connectedCallback() { 
+
+        customElements.whenDefined('a-post').
+            then(_ => this.populatePosts());
+
+    }
+
+
+    populatePosts() { 
         const post = this.querySelector("a-post");
         this.root.appendChild(this.header());
         for (let i = 0; i < this.number; i++) { 
             const clonedPost = post.cloneNode(true);
-            clonedPost.setAttribute('header', `Title: ${i}`);
-            clonedPost.setAttribute('content', `Content: ${i}`);
+            clonedPost.header =  `Title: ${i}`;
+            clonedPost.content =  `Content: ${i}`;
             this.root.appendChild(clonedPost);
         }
         this.root.appendChild(this.footer());

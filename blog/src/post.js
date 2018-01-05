@@ -6,17 +6,32 @@ class APost extends HTMLElement {
         this.templateElement = document.createElement("template");
     }
 
-    get title() { 
-        return this.getAttribute('header');
+    get header() { 
+        const headerValue = this.getAttribute('header');
+        console.log("get header", headerValue);
+        return headerValue;
+
     }
     get content() { 
-        return this.getAttribute('content');
+        const contentValue = this.getAttribute('content');
+        console.log("get content", contentValue);
+        return contentValue;
+    }
+
+    set header(header) { 
+        console.log('set header',header);
+        this.setAttribute('header', header);
+    }
+
+    set content(content) { 
+        console.log("set content", content);
+        this.setAttribute("content",content);
     }
 
     connectedCallback() { 
         this.root.appendChild(this.template());
         const title = this.querySelector("[data-title]");
-        title.innerText = this.title;
+        title.innerText = this.header;
         const content = this.querySelector("[data-content]");
         content.innerText = this.content;
     }
