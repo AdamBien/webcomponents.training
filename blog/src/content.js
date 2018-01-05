@@ -13,13 +13,20 @@ class AContent extends HTMLElement {
     startEditing() { 
         this.editor.value = this.innerText;
         this.innerText = ""; 
-        this.editor.onkeydown = e => console.log();
+        this.editor.onkeydown = e => this.waitForEnter(e);
         this.appendChild(this.editor);
+        this.editor.focus();
+    }
+
+    waitForEnter(e) { 
+        if (e.key === 'Enter') { 
+            this.stopEditing();
+        }
     }
 
     stopEditing() { 
         this.innerText = this.editor.value;
-        this.removeChild(this.editor);
+        this.editor.remove();
     }
 
 
