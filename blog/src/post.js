@@ -32,8 +32,14 @@ class APost extends HTMLElement {
         this.root.appendChild(this.template());
         const title = this.querySelector("[data-title]");
         title.innerText = this.header;
-        const content = this.querySelector("[data-content]");
+        customElements.whenDefined('a-content').
+            then(_ => this.populateContent());
+    }
+
+    populateContent() { 
+        const content = this.querySelector("a-content");
         content.innerText = this.content;
+
     }
 
     template() { 
