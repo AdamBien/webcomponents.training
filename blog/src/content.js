@@ -1,16 +1,12 @@
 class AContent extends HTMLElement { 
 
-    constructor() { 
-        super();
-        this.editor = document.createElement("input");
-    }
 
     connectedCallback() { 
         this.onclick = _ => this.startEditing();
-
     }
 
     startEditing() { 
+        this.editor = document.createElement("input");
         this.editor.value = this.innerText;
         this.innerText = ""; 
         this.editor.onkeydown = e => this.waitForEnter(e);

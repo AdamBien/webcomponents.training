@@ -3,24 +3,23 @@ class APost extends HTMLElement {
     constructor() { 
         super();
         this.root = this.attachShadow({ mode: "open" });
+        this._header = "";
+        this._content = "";
     }
 
     get header() { 
-        const headerValue = this.getAttribute('header');
-        return headerValue;
-
+        return this._header;
     }
     get content() { 
-        const contentValue = this.getAttribute('content');
-        return contentValue;
+        return this._content;
     }
 
     set header(header) { 
-        this.setAttribute('header', header);
+        this._header = header;
     }
 
     set content(content) { 
-        this.setAttribute("content",content);
+        this._content = content;
     }
 
     connectedCallback() { 
@@ -45,6 +44,7 @@ class APost extends HTMLElement {
             templateElement.innerHTML = `
         <style>
         :host{
+            contain: content;
             display:block;
             border: 2px solid lightblue;
             padding: 0.5em;
